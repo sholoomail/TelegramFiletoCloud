@@ -24,8 +24,8 @@ def server_select():
         ],
         [
             InlineKeyboardButton(
-                "gofile.io",
-                callback_data="gofileio"
+                "filedropper.com",
+                callback_data="filedropper"
             ),
             InlineKeyboardButton(
                 "anonymfiles.com",
