@@ -12,7 +12,7 @@ import time
 from bot import LOGGER
 from ..display import progress
 from pyrogram.errors import FloodWait
-from ..upload_servers import fileIO, transferSH, gofileIO, anonymFiles
+from ..upload_servers import fileIO, transferSH, filedropper, anonymFiles
 
 async def fileDownload(client, bot):
     file_path = ''
@@ -45,8 +45,8 @@ async def fileDownload(client, bot):
         await fileIO(file_path, client, user_progress, now)
     if upload_server == "transfersh":
         await transferSH(file_path, client, user_progress, now)
-    if upload_server == "gofileio":
-        await gofileIO(file_path, client, user_progress, now)
+    if upload_server == "filedropper":
+        await filedropper(file_path, client, user_progress, now)
     if upload_server == "anonymfiles":
         await anonymFiles(file_path, client, user_progress, now)
 
