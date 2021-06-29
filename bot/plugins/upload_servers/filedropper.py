@@ -20,27 +20,27 @@ client_except = (
 )
 
 
-async def gofileIO(file, client, bot, s_time):
+async def filedropper(file, client, bot, s_time):
     file_size = size(os.path.getsize(file))
     file_name = file.split('/')[-1]
     await client.edit_message_text(
         chat_id=bot.from_user.id,
         message_id=bot.message_id,
-        text="Uploading to gofile.io"
+        text="Uploading to filedropper.com"
     )
     try:
         async with aiohttp.ClientSession() as session:
             files = {
                 'file': open(file, 'rb')
             }
-            respose = await session.post('https://store9.gofile.io/uploadFile', data=files)
-            dlj = await respose.json()
-            dl = dlj['data']['downloadPage']
+            respose = await session.post('https://www.filedropper.com/', data=files)
+           link = await response.json()
+            dl = link['link']
             await client.edit_message_text(
                 chat_id=bot.from_user.id,
                 message_id=bot.message_id,
                 text=f"Uploaded...100% in {time_data(s_time)}"
-            )
+                            )
             await client.send_message(
                 chat_id=bot.chat.id,
                 text=(
@@ -55,4 +55,4 @@ async def gofileIO(file, client, bot, s_time):
             message_id=bot.message_id,
             text=f"{e}"
         )
-        LOGGER.info(f"{bot.from_user.id} - gofileIO - file_size - {e}")
+        LOGGER.info(f"{bot.from_user.id} - filedropper - file_size - {e}")
