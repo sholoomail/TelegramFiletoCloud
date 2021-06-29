@@ -34,13 +34,13 @@ async def filedropper(file, client, bot, s_time):
                 'file': open(file, 'rb')
             }
             respose = await session.post('https://www.filedropper.com/', data=files)
-           link = await response.json()
+            link = await response.json()
             dl = link['link']
             await client.edit_message_text(
                 chat_id=bot.from_user.id,
                 message_id=bot.message_id,
                 text=f"Uploaded...100% in {time_data(s_time)}"
-                            )
+            )
             await client.send_message(
                 chat_id=bot.chat.id,
                 text=(
